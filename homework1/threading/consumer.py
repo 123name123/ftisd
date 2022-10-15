@@ -36,6 +36,7 @@ if __name__ == "__main__":
     producers = int(input("Enter number of producers\n"))
     condition = threading.Condition(lock=None)
     queue = Queue()
+
     for i in range(1, consumers + 1):
         threading.Thread(name=str(i), target=consumer, args=(queue, condition, consumers,)).start()
     for i in range(1, producers + 1):

@@ -24,6 +24,7 @@ def print_numbers(cond, n):
 def numbers():
     condition = threading.Condition(lock=None)
     n = int(input())
+
     for i in range(1, 4):
         threading.Thread(name=str(i), target=print_numbers, args=(condition, n,)).start()
     threading.Thread(name="main", target=main_notify, args=(condition, n,)).start()
